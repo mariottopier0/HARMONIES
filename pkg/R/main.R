@@ -343,7 +343,7 @@ get.network = function(mcmc.output,
 
     # extract the abundance for the taxa in the network for group 0
     name.idx = sapply(node.names0, function(x){which(abundance.ref0[, 1] == x)})
-    abundance.grp0 = abundance.ref0[name.idx, ]
+    abundance.grp0 = abundance.ref0[unlist(name.idx),]
   }
 
   if(length(unique(phenotype)) == 1){

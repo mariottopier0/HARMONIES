@@ -51,7 +51,8 @@ HARMONIES = function(count.matrix,
                      beta.stars = 0.05,
                      n.rep = 20,
                      bayes.fdr = 0.05,
-                     seed = 123
+                     seed = 123,
+                     ncores = 1
 ){
   # check input
   if(! all(count.matrix == floor(count.matrix)) | any(count.matrix < 0)){
@@ -246,7 +247,8 @@ get.network = function(mcmc.output,
                        beta.stars = 0.1,
                        n.rep = 20,
                        bayes.fdr = 0.01,
-                       seed = 123){
+                       seed = 123,
+                       ncores){
   # check input
   if(! inherits(mcmc.output, "mcmc.zinbdpp")){
     stop("mcmc.output must be the output from function 'run.MCMC.R' ")
@@ -327,7 +329,8 @@ get.network = function(mcmc.output,
   pcorr.grp0 = est.pcor(alpha.matrix = as.matrix(mcmc.summary$nm.alpha0[, keep.idx]),
                         beta.stars = beta.stars,
                         n.rep = n.rep,
-                        seed = seed)
+                        seed = seed,
+                        ncores = ncores)
   edge.grp0 = summarize.edge(pcorr = pcorr.grp0,
                              taxa.name = taxa.names[keep.idx]  )
   node.names0 = c()

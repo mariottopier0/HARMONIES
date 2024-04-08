@@ -89,7 +89,8 @@ summarize.zinbdpp = function(mcmc.output,
 est.pcor = function(alpha.matrix,
                     beta.stars = 0.1,
                     n.rep = 20,
-                    seed = 123){
+                    seed = 123,
+                    ncores){
   # # load libraries
   # if (!require(qgraph)) {install.packages("qgraph", version = "1.6.3")}
   # if (!require(huge)) {install.packages("huge", version = "1.3.2")}
@@ -111,7 +112,8 @@ est.pcor = function(alpha.matrix,
                          criterion='stars',
                          lb.stars=TRUE,
                          ub.stars=TRUE,
-                         seed = seed)
+                         seed = seed,
+                         ncores = ncores)
   pulsar.fit  = refit(pulsar.output)
 
   # obtain the estimated precision matrix

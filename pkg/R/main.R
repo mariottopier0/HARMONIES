@@ -116,7 +116,8 @@ HARMONIES = function(count.matrix,
                                    beta.stars = beta.stars,
                                    n.rep = n.rep,
                                    bayes.fdr = bayes.fdr,
-                                   seed = seed)
+                                   seed = seed,
+                                   ncores = ncores)
   return(HARMONIES.res.list)
 }
 

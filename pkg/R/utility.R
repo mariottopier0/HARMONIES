@@ -90,7 +90,10 @@ est.pcor = function(alpha.matrix,
                     beta.stars = 0.1,
                     n.rep = 20,
                     seed = 123,
-                    ncores){
+                    ncores = 1,
+                    lambda.min.ratio = 0.01,
+                    lambda.sep = -0.01,
+                    nlambda = 'default'){
   # # load libraries
   # if (!require(qgraph)) {install.packages("qgraph", version = "1.6.3")}
   # if (!require(huge)) {install.packages("huge", version = "1.3.2")}
@@ -99,7 +102,11 @@ est.pcor = function(alpha.matrix,
   # initialize the input for glasso
   cor.mat = cor(alpha.matrix)
   diag(cor.mat) = 0
-  lmd.grid = seq(max(cor.mat), max(cor.mat)/100, by = -0.01)
+  lambda.max = max(cor.mat)
+  if(!is.character(nlambda)){
+    lambda.step = - (lambda.max - lambda.min.ratio * lambda.max) / nlambda
+  }
+  lmd.grid = seq(lambda.max, lambda.max * lambda.min.ratio, by = lambda.sep)
   hugeargs = list(lambda = lmd.grid, method = "glasso", verbose = F)
 
   # infer the sparse network by glasso

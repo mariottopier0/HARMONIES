@@ -52,7 +52,10 @@ HARMONIES = function(count.matrix,
                      n.rep = 20,
                      bayes.fdr = 0.05,
                      seed = 123,
-                     ncores = 1
+                     ncores = 1,
+                     lambda.min.ratio = 0.01,
+                     lambda.step = -0.01,
+                     nlambda = 'default'
 ){
   # check input
   if(! all(count.matrix == floor(count.matrix)) | any(count.matrix < 0)){
@@ -117,7 +120,10 @@ HARMONIES = function(count.matrix,
                                    n.rep = n.rep,
                                    bayes.fdr = bayes.fdr,
                                    seed = seed,
-                                   ncores = ncores)
+                                   ncores = ncores,
+                                   lambda.min.ratio = lambda.min.ratio,
+                                   lambda.step = lambda.step,
+                                   nlambda = nlambda)
   return(HARMONIES.res.list)
 }
 
@@ -249,7 +255,10 @@ get.network = function(mcmc.output,
                        n.rep = 20,
                        bayes.fdr = 0.01,
                        seed = 123,
-                       ncores){
+                       ncores = 1,
+                       lambda.min.ratio = 0.01,
+                       lambda.step = -0.01,
+                       nlambda = 'default'){
   # check input
   if(! inherits(mcmc.output, "mcmc.zinbdpp")){
     stop("mcmc.output must be the output from function 'run.MCMC.R' ")
@@ -331,7 +340,10 @@ get.network = function(mcmc.output,
                         beta.stars = beta.stars,
                         n.rep = n.rep,
                         seed = seed,
-                        ncores = ncores)
+                        ncores = ncores,
+                        lambda.min.ratio = lambda.min.ratio,
+                        lambda.sep = lambda.sep,
+                        nlambda = nlambda)
   edge.grp0 = summarize.edge(pcorr = pcorr.grp0,
                              taxa.name = taxa.names[keep.idx]  )
   node.names0 = c()

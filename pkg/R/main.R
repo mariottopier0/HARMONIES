@@ -342,7 +342,7 @@ get.network = function(mcmc.output,
                         seed = seed,
                         ncores = ncores,
                         lambda.min.ratio = lambda.min.ratio,
-                        lambda.sep = lambda.sep,
+                        lambda.step = lambda.step,
                         nlambda = nlambda)
   edge.grp0 = summarize.edge(pcorr = pcorr.grp0,
                              taxa.name = taxa.names[keep.idx]  )

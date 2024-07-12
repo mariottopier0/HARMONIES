@@ -203,7 +203,7 @@ run.ZINBDPP = function(count.matrix = count.matrix,
 
   # fit ZINB-DPP model
   set.seed(seed)
-  cat("Start fitting the ZINB-DPP model. This may take a while... \n")
+  message("Start fitting the ZINB-DPP model. This may take a while... \n")
   MCMC.output  = fitZINBDPP(Y = count.matrix,
                             z = phenotype,
                             s = s0,

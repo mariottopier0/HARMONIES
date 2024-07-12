@@ -110,7 +110,7 @@ est.pcor = function(alpha.matrix,
   hugeargs = list(lambda = lmd.grid, method = "glasso", verbose = F)
 
   # infer the sparse network by glasso
-  cat("Estimating the sparse precision matrix... \n")
+  message("Estimating the sparse precision matrix... \n")
   pulsar.output = pulsar(alpha.matrix,
                          fun=huge,
                          fargs=hugeargs,
